@@ -1,4 +1,5 @@
 local function gh(repo) return 'https://github.com/' .. repo end
+local vim = vim
 
 -- [[ mini.nvim ]]
 --  A collection of various small independent plugins/modules

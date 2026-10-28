@@ -6,10 +6,15 @@ local function gh(repo) return 'https://github.com/' .. repo end
 --  See `:help nvim-treesitter-intro`
 
 -- NOTE: You can also specify a branch or a specific commit
-vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' } }
+vim.pack.add {
+  { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' },
+  gh 'nushell/tree-sitter-nu',
+}
 
 -- Ensure basic parsers are installed
-local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+local parsers = {
+  'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'vim', 'vimdoc', 'nu'
+}
 require('nvim-treesitter').install(parsers)
 
 ---@param buf integer
