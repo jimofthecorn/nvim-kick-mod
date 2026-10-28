@@ -1,14 +1,16 @@
 local function gh(repo) return 'https://github.com/' .. repo end
 local vim = vim
 
-vim.pack.add { gh 'smart-splits-nvim/smart-splits.nvim' }
+vim.pack.add {
+    gh 'smart-splits-nvim/smart-splits.nvim',
+    gh 'sindrets/winshift.nvim',
+}
 local splits = require 'smart-splits'
 splits.setup {
     swap = {
         move_cursor = false,
     },
 }
-
 local resize_left = function(amount)
     local fn = function() splits.resize_left(amount) end
     return fn
@@ -41,3 +43,42 @@ vim.keymap.set('n', '<leader>wsh', splits.swap_buf_left, { noremap = true, desc 
 vim.keymap.set('n', '<leader>wsj', splits.swap_buf_down, { noremap = true, desc = "[w]indow [s]wap down [j]" })
 vim.keymap.set('n', '<leader>wsk', splits.swap_buf_up, { noremap = true, desc = "[w]indow [s]wap up [k]" })
 vim.keymap.set('n', '<leader>wsl', splits.swap_buf_right, { noremap = true, desc = "[w]indow [s]wap right [l]" })
+
+-- winshift plugin
+local winshift = require 'winshift'
+winshift.setup {
+    highlight_moving_win = true,    -- Highlight the window being moved
+    focused_hl_group = "Visual",    -- The highlight group used for the moving window
+    moving_win_options = {
+        -- These are local options applied to the moving window while it's
+        -- being moved. They are unset when you leave Win-Move mode.
+        wrap = false,
+        cursorline = false,
+        cursorcolumn = false,
+        colorcolumn = "",
+    },
+    keymaps = {
+        disable_defaults = false, -- Disable the default keymaps
+        win_move_mode = {
+            ["h"] = "left",
+            ["j"] = "down",
+            ["k"] = "up",
+            ["l"] = "right",
+            ["H"] = "far_left",
+            ["J"] = "far_down",
+            ["K"] = "far_up",
+            ["L"] = "far_right",
+            ["<left>"] = "left",
+            ["<down>"] = "down",
+            ["<up>"] = "up",
+            ["<right>"] = "right",
+            ["<S-left>"] = "far_left",
+            ["<S-down>"] = "far_down",
+            ["<S-up>"] = "far_up",
+            ["<S-right>"] = "far_right",
+        }
+    }
+}
+vim.keymap.set('n', '<C-W>m', '<Cmd>WinShift<CR>', {desc = '[m]ove window'})
+vim.keymap.set('n', '<C-W>X', '<Cmd>WinShift swap<CR>', {desc = '[X]change window'})
+
