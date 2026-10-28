@@ -65,6 +65,45 @@ vim.keymap.set('n', '<leader>wm', function () _G.resize_window(0.99) end,
     { noremap = true, desc = "[w]indow [m]aximize" }
 )
 
+-- change window size more easily (didn't even realize this wasn't builtin)
+vim.keymap.set('n', '-', '<C-w><')
+vim.keymap.set('n', '+', '<C-w>>')
+
+-- toggle show whitespace
+vim.keymap.set('n', '<leader>wt', '<cmd>set list!<cr>', { noremap = true, desc = "[w]hitespace [t]oggle" })
+
+-- tabs
+vim.keymap.set("n", "<leader>ta", '<cmd>tabnew<cr>', { noremap = true, desc = "[t]ab [a]dd" })
+vim.keymap.set("n", "<leader>tc", '<cmd>tabclose<cr>', { noremap = true, desc = "[t]ab [c]lose" })
+-- vim.keymap.set("n", "<leader>to", '<cmd>tabonly<cr>', { noremap = true })
+vim.keymap.set("n", "<leader>tn", '<cmd>tabn<cr>', { noremap = true, desc = "[t]ab [n]ext" })
+vim.keymap.set("n", "<leader>tp", '<cmd>tabp<cr>', { noremap = true, desc = "[t]ab [p]revious" })
+vim.keymap.set("n", "<leader>tr", ':Tabby rename_tab ', { noremap = true, desc = "[t]ab [r]ename" })
+
+-- windows
+vim.keymap.set("n", "<leader>wdt", '<cmd>windo diffthis<cr>', { noremap = true, desc = "[w]indo [d]iff [t]his" })
+vim.keymap.set("n", "<leader>wdo", '<cmd>windo diffoff<cr>', { noremap = true, desc = "[w]indo [d]iff [o]ff" })
+vim.keymap.set("n", "<leader>wS",
+    function()
+        vim.cmd('windo set scrollbind!')
+        vim.notify("scrollbind set to " .. tostring(vim.o.scrollbind), vim.log.levels.INFO)
+    end,
+    { noremap = true, desc = "[w]indo [S]crollbind toggle" }
+)
+
+-- display full path of current file
+vim.keymap.set('n', '<leader>cp', '<cmd>echo expand("%:p")<cr>', { desc = '[c]urrent [p]ath' })
+
+-- vim.keymap.set('n', '<leader>cr', '<cmd>ReloadConfig<cr>', { desc = '[c]onfig [r]eload' })
+
+-- make exiting terminal mode work
+vim.keymap.set('t', '<Esc><Esc><Esc>', '<C-\\><C-n>')
+vim.keymap.set('t', 'jk', '<C-\\><C-n>')
+
+-- quickfixlist
+vim.keymap.set('n', '<leader>qo', '<cmd>copen<cr>', { desc = '[q]uickfix [o]pen' })
+vim.keymap.set('n', '<leader>qc', '<cmd>cclose<cr>', { desc = '[q]uickfix [c]lose' })
+vim.keymap.set('n', '<leader>qv', '<cmd>cfdo vsplit %<cr>', { desc = '[q]uickfix open files in [v]splits' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

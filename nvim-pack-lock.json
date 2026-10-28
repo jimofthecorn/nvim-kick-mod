@@ -2,8 +2,7 @@
   "plugins": {
     "LuaSnip": {
       "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
-      "src": "https://github.com/L3MON4D3/LuaSnip",
-      "version": "2.0.0 - 3.0.0"
+      "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "atone.nvim": {
       "rev": "b44a662534eaa77df27a075a4a2cab9a3e0f2700",
@@ -26,6 +25,10 @@
     "fidget.nvim": {
       "rev": "9e0201673e08e997e7cf52afca5565c70bd117f3",
       "src": "https://github.com/j-hui/fidget.nvim"
+    },
+    "flash.nvim": {
+      "rev": "5f0f270fdc7c5b0c21d903ee85b9cb06f2ac636a",
+      "src": "https://github.com/folke/flash.nvim"
     },
     "gitsigns.nvim": {
       "rev": "d4854fa9a94b5c8b37dd209fb4a19e98e764186f",
