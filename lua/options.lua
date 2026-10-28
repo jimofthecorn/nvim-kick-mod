@@ -17,8 +17,8 @@ _G.python_path = ''
 local nvrpath = ''
 
 if vim.fn.has('win32') == 1 then
-    _G.python_path = vim.fn.expand('$HOME//py_nvim/Scripts/python.exe')
-    nvrpath = vim.fn.expand('$HOME//py_nvim/Scripts/nvr.exe')
+    _G.python_path = vim.fn.expand('$HOME/py_nvim/Scripts/python.exe')
+    nvrpath = vim.fn.expand('$HOME/py_nvim/Scripts/nvr.exe')
 
     vim.g.winaltkeys = 'menu'
 else
