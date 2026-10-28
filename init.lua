@@ -87,6 +87,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- [[ Setting options ]]
 require 'options'
 
+require 'utilities'
+
 -- [[ Basic Keymaps ]]
 require 'keymaps'
 

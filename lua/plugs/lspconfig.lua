@@ -1,4 +1,5 @@
 local function gh(repo) return 'https://github.com/' .. repo end
+local vim = vim
 
 -- [[ LSP Configuration ]]
 -- Brief aside: **What is LSP?**
@@ -28,7 +29,16 @@ local function gh(repo) return 'https://github.com/' .. repo end
 
 -- Useful status updates for LSP.
 vim.pack.add { gh 'j-hui/fidget.nvim' }
-require('fidget').setup {}
+require('fidget').setup {
+  notification = {
+    override_vim_notify = true,
+    window = {
+      border = "single",
+      align = "top",
+      h_align = "right",
+    }
+  },
+}
 
 --  This function gets run when an LSP attaches to a particular buffer.
 --    That is to say, every time a new file is opened that is associated with
